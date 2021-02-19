@@ -80,7 +80,7 @@ keep running until installed 100% </br>
 
 >$ roscd <package_name>
 >$ nano package.xml
-`
+```
 <?xml version="1.0"?>
 <package format="2"> 
   <name>my_gui_pkg</name> 
@@ -105,7 +105,7 @@ keep running until installed 100% </br>
     <my_gui_pkg plugin="${prefix}/plugin.xml"/> 
   </export> 
 </package> 
-`
+```
 
 **2.5 plugin.xml file**
 
@@ -115,7 +115,7 @@ add this file to the package directory </br>
 >$ touch plugin.xml
 
 >$ nano plugin.xml
-`
+```
 <library path="src">
   <class name="My Plugin" type="PACKAGE_NAME.my_module.MyPlugin" base_class_type="rqt_gui_py::Plugin">
     <description>
@@ -128,13 +128,13 @@ add this file to the package directory </br>
     </qtgui>
   </class>
 </library> 
-`
+```
 
 **2.6 CMakeList.txt**
 
 
 >$ nano CMakeList.txt
-`
+```
 cmake_minimum_required(VERSION 3.0.2)
 project(my_gui_pkg)
 find_package(catkin REQUIRED COMPONENTS
@@ -155,7 +155,7 @@ install(DIRECTORY resource
 install(PROGRAMS scripts/my_gui_pkg 
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION} 
 )
-`
+```
 
 **2.7 setup.py file**
 
@@ -163,7 +163,7 @@ install(PROGRAMS scripts/my_gui_pkg
 >$ touch setup.py
 
 >$ nano setup.py
-`
+```
 #!/usr/bin/env python
 
 from distutils.core import setup
@@ -176,13 +176,13 @@ d = generate_distutils_setup(
 )
 
 setup(**d)
-`
+```
 
 **2.7 scripts/<executable_name>**
   
 >$ chmod 755 <executable>
 
-`
+```
 #!/usr/bin/env python
 
 import sys
@@ -193,7 +193,7 @@ from rqt_gui.main import Main
 plugin = 'my_gui_pkg'
 main = Main(filename=plugin)
 sys.exit(main.main(standalone=plugin))
-`
+```
 
 **2.8 Build Package**
 
