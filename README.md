@@ -81,9 +81,8 @@ keep running until installed 100% </br>
 **2.4 package.xml file**
 
 
->$ roscd <package_name> </br>
->
->$ nano package.xml </br>
+>$ roscd <package_name>
+>$ nano package.xml
 
 <?xml version="1.0"?> </br>
 <package format="2"> </br>
@@ -109,7 +108,7 @@ keep running until installed 100% </br>
     <my_gui_pkg plugin="${prefix}/plugin.xml"/> </br>
   </export> </br>
 </package> </br>
-
+'''
 
 **2.5 plugin.xml file**
 
@@ -202,11 +201,7 @@ sys.exit(main.main(standalone=plugin))
 
 
 >$ source /opt/ros/kinetic/setup.bash
->
 >$ cd ~/catkin_ws/
->
 >$ catkin_make
->
 >$ roscd <package_name>
->
 >$ catkin_make
