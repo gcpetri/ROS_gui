@@ -47,35 +47,44 @@ keep running until installed 100% </br>
 </br>
 
 >$ source /opt/ros/kinetic/setup.bash
+>
 >$ mkdir -p ~/catkin_ws/src
+>
 >$ cd ~/catkin_ws/
+>
 >$ catkin_make
+>
 >$ source devel/setup.bash
+>
 >$ echo $ROS_PACKAGE_PATH
 >
-</br>
 
 **2.2 Creating a catkin Package**
 
-</br>
 >$ cd ~/catkin_ws/src </br>
+>
 >$ ### catkin_create_pkg <package_name> [depend1] [depend2] [depend3] </br>
+>
 >$ cd ~/catkin_ws </br>
+>
 >$ catkin_make </br>
+>
 >$ . ~/catkin_ws/devel/setup.bash
-</br>
+
 
 **2.3 Verify working by Checking Package Dependancies**
 
-</br>
+
 >$ rospack depends1 <package_name>
-</br>
+
 
 **2.4 package.xml file**
 
-</br>
+
 >$ roscd <package_name> </br>
+>
 >$ nano package.xml </br>
+
 <?xml version="1.0"?> </br>
 <package format="2"> </br>
   <name>my_gui_pkg</name> </br>
@@ -100,14 +109,17 @@ keep running until installed 100% </br>
     <my_gui_pkg plugin="${prefix}/plugin.xml"/> </br>
   </export> </br>
 </package> </br>
-</br>
+
 
 **2.5 plugin.xml file**
 
-</br>
+
 add this file to the package directory </br>
->$ touch plugin.xml </br>
->$ nano plugin.xml </br>
+
+>$ touch plugin.xml
+>
+>$ nano plugin.xml
+
 <library path="src"> </br>
   <class name="My Plugin" type="PACKAGE_NAME.my_module.MyPlugin" base_class_type="rqt_gui_py::Plugin"> </br>
     <description> </br>
@@ -120,12 +132,13 @@ add this file to the package directory </br>
     </qtgui> </br>
   </class> </br>
 </library> </br>
-</br>
+
 
 **2.6 CMakeList.txt**
 
-</br>
->$ nano CMakeList.txt </br>
+
+>$ nano CMakeList.txt
+
 cmake_minimum_required(VERSION 3.0.2) </br>
 project(my_gui_pkg) </br>
 find_package(catkin REQUIRED COMPONENTS </br>
@@ -146,13 +159,15 @@ install(DIRECTORY resource </br>
 install(PROGRAMS scripts/my_gui_pkg </br>
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION} </br>
 ) </br>
-</br>
+
 
 **2.7 setup.py file**
 
-</br>
->$ touch setup.py </br>
->$ nano setup.py </br>
+
+>$ touch setup.py
+>
+>$ nano setup.py
+
 #!/usr/bin/env python </br>
 </br>
 from distutils.core import setup </br>
@@ -181,13 +196,17 @@ from rqt_gui.main import Main </br>
 plugin = 'my_gui_pkg' </br>
 main = Main(filename=plugin) </br>
 sys.exit(main.main(standalone=plugin))
-</br>
+
 
 **2.8 Build Package**
 
-</br>
->$ source /opt/ros/kinetic/setup.bash </br>
->$ cd ~/catkin_ws/ </br>
->$ catkin_make </br>
->$ roscd <package_name> </br>
->$ catkin_make </br>
+
+>$ source /opt/ros/kinetic/setup.bash
+>
+>$ cd ~/catkin_ws/
+>
+>$ catkin_make
+>
+>$ roscd <package_name>
+>
+>$ catkin_make
