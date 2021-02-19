@@ -6,12 +6,12 @@ Code for the 12th Unmanned Team at Texas A&amp;M University
 
 </br>
 > Part 1: Set up ROS kinetic on a Ubuntu 16.04 virtualbox environment </br>
-> Part 2: Create a user interface for can_bus - the Tamu software for automated vehicle - use rqt plugins for ROS </br>
-> clone the repository @ https://github.tamu.edu/autodrive-common/can_bus </br>
-> Objectives for GUI: </br>
-> * can_bus commands (startus, indicators to check its status) </br>
-> * two modes: manual and automatic </br>
-> * tracking error state: give an indicator something's gone wrong
+ Part 2: Create a user interface for can_bus - the Tamu software for automated vehicle - use rqt plugins for ROS </br>
+ clone the repository @ https://github.tamu.edu/autodrive-common/can_bus </br>
+ Objectives for GUI: </br>
+ * can_bus commands (startus, indicators to check its status) </br>
+ * two modes: manual and automatic </br>
+ * tracking error state: give an indicator something's gone wrong
 </br>
 
 # Solution #
