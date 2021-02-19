@@ -6,9 +6,13 @@ Code for the 12th Unmanned Team at Texas A&amp;M University
 
 </br>
 
-> Part 1: Set up ROS kinetic on a Ubuntu 16.04 virtualbox environment
-> Part 2: Create a user interface for can_bus - the Tamu software for automated vehicle - use rqt plugins for ROS
+> Part 1: 
+> Set up ROS kinetic on a Ubuntu 16.04 virtualbox environment
+> 
+> Part 2: 
+> Create a user interface for can_bus - the Tamu software for automated vehicle - use rqt plugins for ROS
 > clone the repository @ https://github.tamu.edu/autodrive-common/can_bus
+> 
 > Objectives for GUI:
 > * can_bus commands (startus, indicators to check its status)
 > * two modes: manual and automatic
@@ -41,12 +45,14 @@ keep running until installed 100% </br>
 **2.1 Creating a catkin workspace:**
 
 </br>
->$ source /opt/ros/kinetic/setup.bash </br>
->$ mkdir -p ~/catkin_ws/src </br>
->$ cd ~/catkin_ws/ </br>
->$ catkin_make </br>
->$ source devel/setup.bash </br>
+
+>$ source /opt/ros/kinetic/setup.bash
+>$ mkdir -p ~/catkin_ws/src
+>$ cd ~/catkin_ws/
+>$ catkin_make
+>$ source devel/setup.bash
 >$ echo $ROS_PACKAGE_PATH
+>
 </br>
 
 **2.2 Creating a catkin Package**
