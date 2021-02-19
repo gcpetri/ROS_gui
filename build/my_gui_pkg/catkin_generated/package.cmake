@@ -1,5 +1,5 @@
 set(_CATKIN_CURRENT_PACKAGE "my_gui_pkg")
-set(my_gui_pkg_VERSION "0.0.0")
+set(my_gui_pkg_VERSION "1.0.0")
 set(my_gui_pkg_MAINTAINER "Gregory Petri <gcpetri@tamu.edu>")
 set(my_gui_pkg_PACKAGE_FORMAT "2")
 set(my_gui_pkg_BUILD_DEPENDS "rospy" "std_msgs" "rqt_gui" "rqt_gui_py")

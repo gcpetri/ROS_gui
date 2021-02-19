@@ -2,7 +2,7 @@
 
 import sys
 
-from my_gui_pkg.my_module import MyPlugin
+#from my_gui_pkg import MyPlugin
 from rqt_gui.main import Main
 
 plugin = 'my_gui_pkg'
