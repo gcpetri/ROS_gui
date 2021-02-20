@@ -75,10 +75,10 @@ edit this file in package directory </br>
 ```
 <?xml version="1.0"?>
 <package format="2"> 
-  <name>my_gui_pkg</name> 
+  <name>PACKAGE_NAME</name> 
   <version>0.0.0</version> 
-  <description>The my_gui_pkg package</description> 
-  <maintainer email="gcpetri@tamu.edu">Gregory Petri</maintainer> 
+  <description>DESCRIPTION</description> 
+  <maintainer email="YOUR_EMAIL">YOUR_NAME</maintainer> 
   <license>BSD</license>
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>rospy</build_depend>
@@ -109,7 +109,7 @@ add this file to the package directory </br>
 
 ```
 <library path="src">
-  <class name="My Plugin" type="PACKAGE_NAME.my_module.MyPlugin" base_class_type="rqt_gui_py::Plugin">
+  <class name="MyPlugin" type="PACKAGE_NAME.my_module.MyPlugin" base_class_type="rqt_gui_py::Plugin">
     <description>
       An example Python GUI plugin to create a great user interface.
     </description>
@@ -129,7 +129,7 @@ edit file in package directory </br>
 
 ```
 cmake_minimum_required(VERSION 3.0.2)
-project(my_gui_pkg)
+project(<package_name>)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
@@ -171,20 +171,20 @@ d = generate_distutils_setup(
 setup(**d)
 ```
 
-**2.7 scripts/<executable_name>**
+**2.7 scripts/<package_name>**
   
 give executable permissions </br>
-> `$ chmod 755 "executable"`
+> `$ chmod 755 <package_name>`
 
 ```
 #!/usr/bin/env python
 
 import sys
 
-from my_gui_pkg.my_module import MyPlugin
+from <package_name>.my_module import MyPlugin
 from rqt_gui.main import Main
 
-plugin = 'my_gui_pkg'
+plugin = '<package_name>'
 main = Main(filename=plugin)
 sys.exit(main.main(standalone=plugin))
 ```
@@ -203,5 +203,5 @@ sys.exit(main.main(standalone=plugin))
 or </br>
 > `$ rqt --standalone <package_name>`
 
-***giving error: qt_gui_main() found no plugin matching "my_gui_pkg"***
+***giving error: qt_gui_main() found no plugin matching "<package_name>"***
 
