@@ -77,7 +77,7 @@ keep running until installed 100% </br>
 
 **2.4 package.xml file**
 
-
+edit this file in package directory </br>
 >$ roscd <package_name>
 >$ nano package.xml
 ```
@@ -132,7 +132,7 @@ add this file to the package directory </br>
 
 **2.6 CMakeList.txt**
 
-
+edit file in package directory </br>
 >$ nano CMakeList.txt
 ```
 cmake_minimum_required(VERSION 3.0.2)
@@ -159,7 +159,7 @@ install(PROGRAMS scripts/my_gui_pkg
 
 **2.7 setup.py file**
 
-
+create file in package directory </br>
 >$ touch setup.py
 
 >$ nano setup.py
@@ -180,7 +180,8 @@ setup(**d)
 
 **2.7 scripts/<executable_name>**
   
->$ chmod 755 <executable>
+give executable permissions
+>$ chmod 755 "executable"
 
 ```
 #!/usr/bin/env python
@@ -189,7 +190,7 @@ import sys
 
 from my_gui_pkg.my_module import MyPlugin
 from rqt_gui.main import Main
-</br>
+
 plugin = 'my_gui_pkg'
 main = Main(filename=plugin)
 sys.exit(main.main(standalone=plugin))
