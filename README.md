@@ -54,7 +54,7 @@ keep running until installed 100% </br>
 **2.2 Creating a catkin Package**
 
 > `$ cd ~/catkin_ws/src </br>`
-> `$ ### catkin_create_pkg <package_name> [depend1] [depend2] [depend3]`
+> `$ catkin_create_pkg <package_name> [depend1] [depend2] [depend3]`
 > `$ cd ~/catkin_ws`
 > `$ catkin_make`
 > `$ . ~/catkin_ws/devel/setup.bash`
