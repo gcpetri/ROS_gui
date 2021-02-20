@@ -102,7 +102,7 @@ keep running until installed 100% </br>
   <exec_depend>std_msgs</exec_depend> 
   <exec_depend>rqt_gui_py</exec_depend> 
   <export> 
-    <my_gui_pkg plugin="${prefix}/plugin.xml"/> 
+    <rqt_gui plugin="${prefix}/plugin.xml"/> 
   </export> 
 </package> 
 ```
