@@ -31,9 +31,9 @@ Go to Settings->Software & Updates and check main, resricted, universe, and mult
 Follow the instructions @ http://wiki.ros.org/Installation/Ubuntu </br>
 
 If problems keep occuring such as Error 400, run </br>
->$ sudo apt-get update --fix-missing
+> `$ sudo apt-get update --fix-missing`
 followed by, </br>
->$ sudo apt-get install ros-kinetic-desktop-full
+> `$ sudo apt-get install ros-kinetic-desktop-full` </br>
 keep running until installed 100% </br>
 </br>
 
