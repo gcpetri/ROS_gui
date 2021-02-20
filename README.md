@@ -43,43 +43,35 @@ keep running until installed 100% </br>
 **2.1 Creating a catkin workspace:**
 
 
->$ source /opt/ros/kinetic/setup.bash
->
->$ mkdir -p ~/catkin_ws/src
->
->$ cd ~/catkin_ws/
->
->$ catkin_make
->
->$ source devel/setup.bash
->
->$ echo $ROS_PACKAGE_PATH
->
+> `$ source /opt/ros/kinetic/setup.bash`
+> `$ mkdir -p ~/catkin_ws/src`
+> `$ cd ~/catkin_ws/`
+> `$ catkin_make`
+> `$ source devel/setup.bash`
+> `$ echo $ROS_PACKAGE_PATH`
+
 
 **2.2 Creating a catkin Package**
 
->$ cd ~/catkin_ws/src </br>
->
->$ ### catkin_create_pkg <package_name> [depend1] [depend2] [depend3] </br>
->
->$ cd ~/catkin_ws </br>
->
->$ catkin_make </br>
->
->$ . ~/catkin_ws/devel/setup.bash
+> `$ cd ~/catkin_ws/src </br>`
+> `$ ### catkin_create_pkg <package_name> [depend1] [depend2] [depend3]`
+> `$ cd ~/catkin_ws`
+> `$ catkin_make`
+> `$ . ~/catkin_ws/devel/setup.bash`
 
 
 **2.3 Verify working by Checking Package Dependancies**
 
 
->$ rospack depends1 <package_name>
+> `$ rospack depends1 <package_name>`
 
 
 **2.4 package.xml file**
 
 edit this file in package directory </br>
->$ roscd <package_name>
->$ nano package.xml
+> `$ roscd <package_name>`
+> `$ nano package.xml`
+
 ```
 <?xml version="1.0"?>
 <package format="2"> 
@@ -112,9 +104,9 @@ edit this file in package directory </br>
 
 add this file to the package directory </br>
 
->$ touch plugin.xml
+> `$ touch plugin.xml`
+> `$ nano plugin.xml`
 
->$ nano plugin.xml
 ```
 <library path="src">
   <class name="My Plugin" type="PACKAGE_NAME.my_module.MyPlugin" base_class_type="rqt_gui_py::Plugin">
@@ -133,7 +125,8 @@ add this file to the package directory </br>
 **2.6 CMakeList.txt**
 
 edit file in package directory </br>
->$ nano CMakeList.txt
+> `$ nano CMakeList.txt`
+
 ```
 cmake_minimum_required(VERSION 3.0.2)
 project(my_gui_pkg)
@@ -160,9 +153,9 @@ install(PROGRAMS scripts/my_gui_pkg
 **2.7 setup.py file**
 
 create file in package directory </br>
->$ touch setup.py
+> `$ touch setup.py`
+> `$ nano setup.py`
 
->$ nano setup.py
 ```
 #!/usr/bin/env python
 
@@ -180,8 +173,8 @@ setup(**d)
 
 **2.7 scripts/<executable_name>**
   
-give executable permissions
->$ chmod 755 "executable"
+give executable permissions </br>
+> `$ chmod 755 "executable"`
 
 ```
 #!/usr/bin/env python
@@ -198,22 +191,17 @@ sys.exit(main.main(standalone=plugin))
 
 **2.8 Build Package**
 
-> $ source /opt/ros/kinetic/setup.bash
-> 
-> $ cd ~/catkin_ws/
-> 
-> $ catkin_make
-> 
-> $ roscd <package_name>
-> 
-> $ catkin_make
->
+> `$ source /opt/ros/kinetic/setup.bash`
+> `$ cd ~/catkin_ws/`
+> `$ catkin_make`
+> `$ roscd <package_name>`
+> `$ catkin_make`
 
 **2.9 Run Package**
 
-> $ rosrun `<package_name> <package_name>`
+> `$ rosrun <package_name> <package_name>`
 or </br>
-> $ rqt --standalone `<package_name>`
+> `$ rqt --standalone <package_name>`
 
 ***giving error: qt_gui_main() found no plugin matching "my_gui_pkg"***
 
