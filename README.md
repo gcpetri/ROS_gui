@@ -208,3 +208,12 @@ sys.exit(main.main(standalone=plugin))
 > 
 > $ catkin_make
 >
+
+**2.9 Run Package**
+
+> $ rosrun `<package_name> <package_name>`
+or </br>
+> $ rqt --standalone `<package_name>`
+
+***giving error: qt_gui_main() found no plugin matching "my_gui_pkg"***
+
