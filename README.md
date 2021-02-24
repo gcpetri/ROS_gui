@@ -11,8 +11,7 @@ Code for the 12th Unmanned Team at Texas A&amp;M University
 > 
 > Part 2: 
 > Create a user interface for can_bus - the Tamu software for automated vehicle - use rqt plugins for ROS
-> clone the repository @ https://github.tamu.edu/autodrive-common/can_bus
-> 
+>
 > Objectives for GUI:
 > * can_bus commands (startus, indicators to check its status)
 > * two modes: manual and automatic
