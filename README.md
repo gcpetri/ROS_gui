@@ -192,9 +192,9 @@ sys.exit(main.main(standalone=plugin))
 
 > `$ source /opt/ros/kinetic/setup.bash`
 > `$ cd ~/catkin_ws/`
+> `$ source devel/setup.bash`
 > `$ catkin_make`
 > `$ roscd <package_name>`
-> `$ catkin_make`
 
 **2.9 Run Package**
 
