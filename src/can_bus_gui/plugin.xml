@@ -4,8 +4,8 @@
       An example Python GUI plugin to create a great user interface.
     </description>
     <qtgui> 
-      <label>Start Canbus</label>
-      <icon type="theme">folder</icon>
+      <label> </label>
+      <icon type="theme">system-run</icon>
       <statustip>Great user interface to provide real value.</statustip>
     </qtgui>
   </class>

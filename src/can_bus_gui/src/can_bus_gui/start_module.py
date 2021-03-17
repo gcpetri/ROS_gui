@@ -4,6 +4,7 @@ import rospkg
 
 from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
+from python_qt_binding.QtCore import Qt, Slot
 from python_qt_binding.QtWidgets import QWidget
 #from python_qt_binding.QtGui import QLabel, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QCheckBox, QWidget, QToolBar, QLineEdit, QPushButton
 
@@ -32,17 +33,41 @@ class StartPlugin(Plugin):
         #self._widget.setStyleSheet("background: rgb(250,250,250);")
 	uifile = os.path.join(rospkg.RosPack().get_path('can_bus_gui'), 'resource', 'canbusmain.ui')
 	loadUi(uifile, self._widget)
-
 	self._widget.setObjectName('canbusmain')
 
         # tell from pane to pane.
         if context.serial_number() > 1:
             self._widget.setWindowTitle(self._widget.windowTitle() + (' (%d)' % context.serial_number()))
-        # Add widget to the user interface
+
+	#adding functionality
+	self._widget.btn_launch.clicked.connect(self.on_launch)
+
+	# Add widget to the user interface
         context.add_widget(self._widget)
 
-    def update(self, a):
-        a.adjustSize()
+    @Slot()
+    def on_launch(self):
+	if self._widget.rb_full.isChecked():
+	     self._widget.lbl_load_status.setText("loading full mode...")
+	     self._widget.btn_launch.setEnabled(False)
+	     self._widget.rb_pedals.setEnabled(False)
+	     self._widget.rb_full.setEnabled(False)
+	     self._widget.rb_steering.setEnabled(False)
+	elif self._widget.rb_pedals.isChecked():
+	     self._widget.lbl_load_status.setText("loading pedals mode...")
+	     self._widget.btn_launch.setEnabled(False)
+	     self._widget.rb_full.setEnabled(False)
+	     self._widget.rb_pedals.setEnabled(False)
+	     self._widget.rb_steering.setEnabled(False)
+	elif self._widget.rb_steering.isChecked():
+	     self._widget.lbl_load_status.setText("loading steering mode...")
+	     self._widget.btn_launch.setEnabled(False)
+	     self._widget.rb_full.setEnabled(False)
+	     self._widget.rb_steering.setEnabled(False)
+             self._widget.rb_pedals.setEnabled(False)
+	else:
+	     self._widget.lbl_load_status.setText("select a mode.")
+	print("launch")
 
     def shutdown_plugin(self):
         # TODO unregister all publishers here
