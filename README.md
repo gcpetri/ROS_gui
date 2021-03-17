@@ -1,4 +1,4 @@
-# SAE_autodrive
+# ROS gui
 Code for the 12th Unmanned Team at Texas A&amp;M University
 </br>
 
@@ -11,8 +11,7 @@ Code for the 12th Unmanned Team at Texas A&amp;M University
 > 
 > Part 2: 
 > Create a user interface for can_bus - the Tamu software for automated vehicle - use rqt plugins for ROS
-> clone the repository @ https://github.tamu.edu/autodrive-common/can_bus
-> 
+>
 > Objectives for GUI:
 > * can_bus commands (startus, indicators to check its status)
 > * two modes: manual and automatic
@@ -31,9 +30,9 @@ Go to Settings->Software & Updates and check main, resricted, universe, and mult
 Follow the instructions @ http://wiki.ros.org/Installation/Ubuntu </br>
 
 If problems keep occuring such as Error 400, run </br>
->$ sudo apt-get update --fix-missing
+> `$ sudo apt-get update --fix-missing`
 followed by, </br>
->$ sudo apt-get install ros-kinetic-desktop-full
+> `$ sudo apt-get install ros-kinetic-desktop-full` </br>
 keep running until installed 100% </br>
 </br>
 
@@ -43,50 +42,42 @@ keep running until installed 100% </br>
 **2.1 Creating a catkin workspace:**
 
 
->$ source /opt/ros/kinetic/setup.bash
->
->$ mkdir -p ~/catkin_ws/src
->
->$ cd ~/catkin_ws/
->
->$ catkin_make
->
->$ source devel/setup.bash
->
->$ echo $ROS_PACKAGE_PATH
->
+> `$ source /opt/ros/kinetic/setup.bash`
+> `$ mkdir -p ~/catkin_ws/src`
+> `$ cd ~/catkin_ws/`
+> `$ catkin_make`
+> `$ source devel/setup.bash`
+> `$ echo $ROS_PACKAGE_PATH`
+
 
 **2.2 Creating a catkin Package**
 
->$ cd ~/catkin_ws/src </br>
->
->$ ### catkin_create_pkg <package_name> [depend1] [depend2] [depend3] </br>
->
->$ cd ~/catkin_ws </br>
->
->$ catkin_make </br>
->
->$ . ~/catkin_ws/devel/setup.bash
+> `$ cd ~/catkin_ws/src </br>`
+> `$ catkin_create_pkg <package_name> [depend1] [depend2] [depend3]`
+> `$ cd ~/catkin_ws`
+> `$ catkin_make`
+> `$ . ~/catkin_ws/devel/setup.bash`
 
 
 **2.3 Verify working by Checking Package Dependancies**
 
 
->$ rospack depends1 <package_name>
+> `$ rospack depends1 <package_name>`
 
 
 **2.4 package.xml file**
 
+edit this file in package directory </br>
+> `$ roscd <package_name>`
+> `$ nano package.xml`
 
->$ roscd <package_name>
->$ nano package.xml
 ```
 <?xml version="1.0"?>
 <package format="2"> 
-  <name>my_gui_pkg</name> 
+  <name>PACKAGE_NAME</name> 
   <version>0.0.0</version> 
-  <description>The my_gui_pkg package</description> 
-  <maintainer email="gcpetri@tamu.edu">Gregory Petri</maintainer> 
+  <description>DESCRIPTION</description> 
+  <maintainer email="YOUR_EMAIL">YOUR_NAME</maintainer> 
   <license>BSD</license>
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>rospy</build_depend>
@@ -102,7 +93,7 @@ keep running until installed 100% </br>
   <exec_depend>std_msgs</exec_depend> 
   <exec_depend>rqt_gui_py</exec_depend> 
   <export> 
-    <my_gui_pkg plugin="${prefix}/plugin.xml"/> 
+    <rqt_gui plugin="${prefix}/plugin.xml"/> 
   </export> 
 </package> 
 ```
@@ -112,12 +103,12 @@ keep running until installed 100% </br>
 
 add this file to the package directory </br>
 
->$ touch plugin.xml
+> `$ touch plugin.xml`
+> `$ nano plugin.xml`
 
->$ nano plugin.xml
 ```
 <library path="src">
-  <class name="My Plugin" type="PACKAGE_NAME.my_module.MyPlugin" base_class_type="rqt_gui_py::Plugin">
+  <class name="MyPlugin" type="PACKAGE_NAME.my_module.MyPlugin" base_class_type="rqt_gui_py::Plugin">
     <description>
       An example Python GUI plugin to create a great user interface.
     </description>
@@ -132,11 +123,12 @@ add this file to the package directory </br>
 
 **2.6 CMakeList.txt**
 
+edit file in package directory </br>
+> `$ nano CMakeList.txt`
 
->$ nano CMakeList.txt
 ```
 cmake_minimum_required(VERSION 3.0.2)
-project(my_gui_pkg)
+project(<package_name>)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
@@ -159,10 +151,10 @@ install(PROGRAMS scripts/my_gui_pkg
 
 **2.7 setup.py file**
 
+create file in package directory </br>
+> `$ touch setup.py`
+> `$ nano setup.py`
 
->$ touch setup.py
-
->$ nano setup.py
 ```
 #!/usr/bin/env python
 
@@ -178,32 +170,37 @@ d = generate_distutils_setup(
 setup(**d)
 ```
 
-**2.7 scripts/<executable_name>**
+**2.7 scripts/<package_name>**
   
->$ chmod 755 <executable>
+give executable permissions </br>
+> `$ chmod 755 <package_name>`
 
 ```
 #!/usr/bin/env python
 
 import sys
 
-from my_gui_pkg.my_module import MyPlugin
+from <package_name>.my_module import MyPlugin
 from rqt_gui.main import Main
-</br>
-plugin = 'my_gui_pkg'
+
+plugin = '<package_name>'
 main = Main(filename=plugin)
 sys.exit(main.main(standalone=plugin))
 ```
 
 **2.8 Build Package**
 
-> $ source /opt/ros/kinetic/setup.bash
-> 
-> $ cd ~/catkin_ws/
-> 
-> $ catkin_make
-> 
-> $ roscd <package_name>
-> 
-> $ catkin_make
->
+> `$ source /opt/ros/kinetic/setup.bash`
+> `$ cd ~/catkin_ws/`
+> `$ source devel/setup.bash`
+> `$ catkin_make`
+> `$ roscd <package_name>`
+
+**2.9 Run Package**
+
+> `$ rosrun <package_name> <package_name>`
+or </br>
+> `$ rqt --standalone <package_name>`
+
+***giving error: qt_gui_main() found no plugin matching "<package_name>"***
+

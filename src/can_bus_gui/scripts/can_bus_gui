@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+
+import sys
+
+from can_bus_gui.start_module import StartPlugin
+from rqt_gui.main import Main
+
+plugin = 'can_bus_gui'
+main = Main(filename=plugin)
+sys.exit(main.main(standalone=plugin))
