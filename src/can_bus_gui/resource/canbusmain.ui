@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>canbusmain</class>
- <widget class="QMainWindow" name="canbusmain">
+ <widget class="QWidget" name="canbusmain">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -74,7 +74,7 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
-    <property name="styleSheet">
+    <!--<property name="styleSheet">
      <string notr="true">@
 QPushButton {
 border: none;
@@ -86,7 +86,7 @@ QPushButton:hover {
 background-color: grey;
 }
 @</string>
-    </property>
+    </property>-->
     <property name="text">
      <string>Launch</string>
     </property>
@@ -197,9 +197,9 @@ background-color: grey;
     <property name="text">
      <string/>
     </property>
-    <property name="pixmap">
+    <!--<property name="pixmap">
      <pixmap>canbus_gui/tamu_logo_blue_100x70.png</pixmap>
-    </property>
+    </property>-->
    </widget>
    <widget class="QRadioButton" name="rb_steering">
     <property name="geometry">
@@ -221,7 +221,7 @@ background-color: grey;
     </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
+  <!--<widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -230,7 +230,7 @@ background-color: grey;
      <height>24</height>
     </rect>
    </property>
-  </widget>
+  </widget>-->
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>

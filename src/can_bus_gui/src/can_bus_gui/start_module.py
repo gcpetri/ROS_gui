@@ -5,6 +5,7 @@ import rospkg
 from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
 from python_qt_binding.QtWidgets import QWidget
+#from python_qt_binding.QtGui import QLabel, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QCheckBox, QWidget, QToolBar, QLineEdit, QPushButton
 
 class StartPlugin(Plugin):
 
@@ -27,21 +28,21 @@ class StartPlugin(Plugin):
 
         # Create QWidget
         self._widget = QWidget()
-        # Get path to UI file which should be in the "resource" folder of this package
-        # ui_file = os.path.join(rospkg.RosPack().get_path('my_gui_pkg'), 'resource', 'MyPlugin.ui')
-        # Extend the widget with all attributes and children from UI file
-        # loadUi(ui_file, self._widget)
-        # Give QObjects reasonable names
-        # self._widget.setObjectName('MyPluginUi')
-        # Show _widget.windowTitle on left-top of each plugin (when 
-        # it's set in _widget). This is useful when you open multiple 
-        # plugins at once. Also if you open multiple instances of your 
-        # plugin at once, these lines add number to make it easy to 
+	#self._widget.setGeometry(700,200,600,500)
+        #self._widget.setStyleSheet("background: rgb(250,250,250);")
+	uifile = os.path.join(rospkg.RosPack().get_path('can_bus_gui'), 'resource', 'canbusmain.ui')
+	loadUi(uifile, self._widget)
+
+	self._widget.setObjectName('canbusmain')
+
         # tell from pane to pane.
         if context.serial_number() > 1:
             self._widget.setWindowTitle(self._widget.windowTitle() + (' (%d)' % context.serial_number()))
         # Add widget to the user interface
         context.add_widget(self._widget)
+
+    def update(self, a):
+        a.adjustSize()
 
     def shutdown_plugin(self):
         # TODO unregister all publishers here

@@ -5,7 +5,7 @@
     </description>
     <qtgui> 
       <label>Start Canbus</label>
-      <icon type="theme">system-help</icon>
+      <icon type="theme">folder</icon>
       <statustip>Great user interface to provide real value.</statustip>
     </qtgui>
   </class>
