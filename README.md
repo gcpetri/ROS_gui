@@ -192,7 +192,7 @@ sys.exit(main.main(standalone=plugin))
 
 > `$ source /opt/ros/kinetic/setup.bash`
 > `$ cd ~/catkin_ws/`
-> `$ source devel/setup.bash`
+> `$ source devel/setup.bash`</br>
 > `$ source src/can_bus/include/Virtual_CAN_Setup.sh`
 > `$ catkin_make`
 > `$ roscd <package_name>`
