@@ -204,3 +204,8 @@ or </br>
 
 ***giving error: qt_gui_main() found no plugin matching "<package_name>"***
 
+Notes: </br>
+
+> `echo $PYTHONPATH`
+
+/opt/ros/kinetic/lib/python2.7/dist-packages:
