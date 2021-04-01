@@ -21,6 +21,16 @@ Code for the 12th Unmanned Team at Texas A&amp;M University
 
 # Solution #
 
+# EDIT # </br>
+you can follow the instructions below -OR- </br>
+you can run the scripts I created in the ROS_scripts directory </br>
+they will save hours in setup time... </br>
+(be sure to edit the global variables at the top of the files to customize your workspace and package) </br>
+ 
+> 1.  ros_install.sh </br>
+> 2.  ros_create_catkin_workspace.sh </br>
+> 3.  ros_create_catkin_package.sh </br>
+
 </br>
 
 **Part 1:**
