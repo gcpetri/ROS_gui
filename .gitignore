@@ -1,4 +1,4 @@
 # Ignore the can_bus directory for privacy
 can_bus/
 
-./catkin_workspace
+.catkin_workspace
