@@ -1,2 +1,0 @@
-my_gui_pkg
--DCATKIN_DEVEL_PREFIX=/home/gcpetri/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/gcpetri/catkin_ws/install -G Unix Makefiles
