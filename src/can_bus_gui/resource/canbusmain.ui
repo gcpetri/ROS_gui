@@ -81,7 +81,6 @@ border: none;
 background-color: #3e7bb9;
 color: white;
 }
-
 QPushButton:hover {
 background-color: grey;
 }

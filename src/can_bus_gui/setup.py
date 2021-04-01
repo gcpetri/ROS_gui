@@ -8,6 +8,4 @@ d = generate_distutils_setup(
     package_dir={'': 'src'},
     scripts=['scripts/can_bus_gui']
 )
-
 setup(**d)
-

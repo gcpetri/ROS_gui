@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(can_bus_gui)
 find_package(catkin REQUIRED COMPONENTS
-  rospy
   std_msgs
   rqt_gui
   rqt_gui_py
+  rospy
 )
 catkin_python_setup()
 catkin_package()

@@ -3,10 +3,10 @@
     <description>
       An example Python GUI plugin to create a great user interface.
     </description>
-    <qtgui> 
+    <qtgui>
       <label> </label>
       <icon type="theme">system-run</icon>
       <statustip>Great user interface to provide real value.</statustip>
     </qtgui>
   </class>
-</library> 
+</library>

@@ -6,7 +6,6 @@ from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
 from python_qt_binding.QtCore import Qt, Slot
 from python_qt_binding.QtWidgets import QWidget
-#from python_qt_binding.QtGui import QLabel, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QCheckBox, QWidget, QToolBar, QLineEdit, QPushButton
 
 class StartPlugin(Plugin):
 
@@ -39,7 +38,7 @@ class StartPlugin(Plugin):
         if context.serial_number() > 1:
             self._widget.setWindowTitle(self._widget.windowTitle() + (' (%d)' % context.serial_number()))
 
-	#adding functionality
+        #adding functionality
 	self._widget.btn_launch.clicked.connect(self.on_launch)
 
 	# Add widget to the user interface
