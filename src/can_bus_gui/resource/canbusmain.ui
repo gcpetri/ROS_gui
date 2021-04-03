@@ -18,7 +18,15 @@
   <property name="windowTitle">
    <string>canbusmain</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="centralwidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>531</width>
+     <height>430</height>
+    </rect>
+   </property>
    <widget class="QLabel" name="lbl_start_canbus">
     <property name="geometry">
      <rect>
@@ -74,18 +82,6 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
-    <!--<property name="styleSheet">
-     <string notr="true">@
-QPushButton {
-border: none;
-background-color: #3e7bb9;
-color: white;
-}
-QPushButton:hover {
-background-color: grey;
-}
-@</string>
-    </property>-->
     <property name="text">
      <string>Launch</string>
     </property>
@@ -219,18 +215,30 @@ background-color: grey;
      <string>can_steering</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btn_cancel">
+    <property name="geometry">
+     <rect>
+      <x>382</x>
+      <y>327</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>cancel</string>
+    </property>
+   </widget>
   </widget>
-  <!--<widget class="QMenuBar" name="menubar">
+  <widget class="QStatusBar" name="statusbar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>510</width>
-     <height>24</height>
+     <width>3</width>
+     <height>18</height>
     </rect>
    </property>
-  </widget>-->
-  <widget class="QStatusBar" name="statusbar"/>
+  </widget>
  </widget>
  <resources/>
  <connections/>
