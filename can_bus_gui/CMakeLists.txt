@@ -15,6 +15,8 @@ install(FILES
 install(DIRECTORY resource
    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
-install(PROGRAMS scripts/can_bus_gui
+install(PROGRAMS
+   scripts/can_bus_gui
+   scripts/controller_status_widget
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

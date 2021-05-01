@@ -1,7 +1,11 @@
 import os
 import io
+from cStringIO import StringIO
 import rospy
 import rospkg
+import time
+
+#from monitor_status import listen
 
 from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
@@ -70,24 +74,27 @@ class StartPlugin(Plugin):
         self.roslaunch_file = roslaunch.rlutil.resolve_launch_arguments(self.cli_args)
         self.parent = roslaunch.parent.ROSLaunchParent(self.uuid, self.roslaunch_file)
         # change qt widget visibility
+        self._widget.btn_cancel.show()
         self.is_launching = True
         self._widget.progressBar_load.show()
-        self._widget.btn_cancel.show()
-        # run roslaunch
-        self.parent.start()
-        # self.temp_out = io.BytesIO()
-        # try:
-        #     sys.stdout = self.temp_out
-        #     self.parent.start()
-        #     self.temp_string = str(self.temp_out.getvalue())
-        #     while self.temp_string != "CAN Diagnostics - Starting Diagnostics...":
-        #          self.lbl_load_status.setText(self.temp_string)
-        #          self.temp_string = str(self.temp_out.getvalue())
-        # except:
-        #     print("Could no redirect")
-        # finally:
-        #     sys.stdout = sys.__stdout__
-        #     print("back to normal standard output")
+	# redirect stdout and run roslaunch
+	self.backup = sys.stdout
+	try:
+              sys.stdout = StringIO()
+	      self.parent.start()
+	      self.out = sys.stdout.getvalue()
+	finally:
+	      sys.stdout.close()
+              sys.stdout = self.backup
+        print(self.out)
+	self.count = 0
+	for line in self.out.splitlines():
+	      self._widget.lbl_load_status.setText(line)
+              self.count += 3
+              self._widget.progressBar_load.setValue(self.count)
+              time.sleep(0.2)
+        self._widget.progressBar_load.setValue(100)
+        #monitor_status.listen()
 
     @Slot()
     def on_launch(self):

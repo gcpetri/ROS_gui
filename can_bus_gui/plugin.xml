@@ -1,0 +1,24 @@
+<library path="src">
+  <class name="StartPlugin" type="can_bus_gui.start_module.StartPlugin" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      Used to display the start menu to launch the can_bus
+    </description>
+    <qtgui>
+      <label>Start</label>
+      <icon type="theme">system-run</icon>
+      <statustip>Great user interface to provide real value.</statustip>
+    </qtgui>
+  </class>
+  
+  <class name="ControllerStatusPlugin" type="can_bus_gui.controller_status_module.ControllerStatusPlugin" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      Used to display the status of the main can controller (from can_controller.py
+    </description>
+    <qtgui>
+      <label>Controller</label>
+      <icon type="theme">system-help</icon>
+      <statustip>Great user interface to provide real value.</statustip>
+    </qtgui>
+  </class>
+
+</library>
