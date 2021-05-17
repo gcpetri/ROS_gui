@@ -5,21 +5,25 @@ Scripts for the 12th Unmanned Team at Texas A&amp;M University
 # Objective #
 
 </br>
-> Part 1: 
-> Set up ROS kinetic on a Ubuntu 16.04 virtualbox environment
+
+> Part 1: </br>
+> Set up ROS kinetic on a Ubuntu 16.04 virtualbox environment </br>
 > 
-> Part 2: 
-> Create a user interface for can_bus - the Tamu software for automated vehicle - use rqt plugins for ROS
+> Part 2: </br>
+> Create a user interface for can_bus - the Tamu software for automated vehicle - use rqt plugins for ROS </br>
 >
+
 </br>
 
-# Solution # </br>
+# Solution #
+
 > Follow the helper instructions below -OR- </br>
 > Run the scripts I created in the ROS_scripts directory </br>
 > They will save hours in setup time... </br>
 > (be sure to edit the global variables at the top of the files to customize your workspace and package) </br>
 
 # Scripts #
+
 > 1.  ros_install.sh  --  install ROS in your Linux Environment </br>
 > 2.  ros_create_catkin_workspace.sh  --  create and configure a catkin workspace, required to use ROS </br>
 > 3.  ros_create_catkin_package.sh  --  create a simple custom rqt package in your workspace </br>
