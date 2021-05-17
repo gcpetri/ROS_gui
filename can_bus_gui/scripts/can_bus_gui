@@ -2,7 +2,7 @@
 
 import sys
 
-from can_bus_gui.start_module import StartPlugin
+from can_bus_gui.canbus_dashboard_module import Canbus_Dashboard_Plugin
 from rqt_gui.main import Main
 
 plugin = 'can_bus_gui'

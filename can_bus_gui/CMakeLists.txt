@@ -17,6 +17,5 @@ install(DIRECTORY resource
 )
 install(PROGRAMS
    scripts/can_bus_gui
-   scripts/controller_status_widget
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
