@@ -1,43 +1,41 @@
-# ROS gui
-Code for the 12th Unmanned Team at Texas A&amp;M University
+# ROS_scripts
+Scripts for the 12th Unmanned Team at Texas A&amp;M University
 </br>
 
-# Problem #
+# Objective #
 
 </br>
-
 > Part 1: 
 > Set up ROS kinetic on a Ubuntu 16.04 virtualbox environment
 > 
 > Part 2: 
 > Create a user interface for can_bus - the Tamu software for automated vehicle - use rqt plugins for ROS
 >
-> Objectives for GUI:
-> * can_bus commands (startus, indicators to check its status)
-> * two modes: manual and automatic
-> * tracking error state: give an indicator something's gone wrong
-> 
 </br>
 
-# Solution #
+# Solution # </br>
+> Follow the helper instructions below -OR- </br>
+> Run the scripts I created in the ROS_scripts directory </br>
+> They will save hours in setup time... </br>
+> (be sure to edit the global variables at the top of the files to customize your workspace and package) </br>
 
-# EDIT # </br>
-you can follow the instructions below -OR- </br>
-you can run the scripts I created in the ROS_scripts directory </br>
-they will save hours in setup time... </br>
-(be sure to edit the global variables at the top of the files to customize your workspace and package) </br>
- 
-> 1.  ros_install.sh </br>
-> 2.  ros_create_catkin_workspace.sh </br>
-> 3.  ros_create_catkin_package.sh </br>
+# Scripts #
+> 1.  ros_install.sh  --  install ROS in your Linux Environment </br>
+> 2.  ros_create_catkin_workspace.sh  --  create and configure a catkin workspace, required to use ROS </br>
+> 3.  ros_create_catkin_package.sh  --  create a simple custom rqt package in your workspace </br>
 
 </br>
 
-**Part 1:**
+**Requirements**
 
 Start an ubuntu server with virtualbox using Ubuntu 16.04.7 desktop image. </br>
 Go to Settings->Software & Updates and check main, resricted, universe, and multiverse are checked. </br>
 Follow the instructions @ http://wiki.ros.org/Installation/Ubuntu </br>
+
+__below is OPTIONAL__
+<hr></hr>
+
+**1. Setting up ROS**
 
 If problems keep occuring such as Error 400, run </br>
 > `$ sudo apt-get update --fix-missing`
@@ -46,10 +44,7 @@ followed by, </br>
 keep running until installed 100% </br>
 </br>
 
-**Part 2:**
-
-
-**2.1 Creating a catkin workspace:**
+**2. Catkin Workspace**
 
 
 > `$ source /opt/ros/kinetic/setup.bash`
@@ -60,7 +55,7 @@ keep running until installed 100% </br>
 > `$ echo $ROS_PACKAGE_PATH`
 
 
-**2.2 Creating a catkin Package**
+**3.0 Creating a Catkin Package**
 
 > `$ cd ~/catkin_ws/src </br>`
 > `$ catkin_create_pkg <package_name> [depend1] [depend2] [depend3]`
@@ -69,16 +64,16 @@ keep running until installed 100% </br>
 > `$ . ~/catkin_ws/devel/setup.bash`
 
 
-**2.3 Verify working by Checking Package Dependancies**
+**3.1 Verify working by Checking Package Dependancies**
 
 
 > `$ rospack depends1 <package_name>`
 
 
-**2.4 package.xml file**
+**3.2 package.xml file**
 
 edit this file in package directory </br>
-> `$ roscd <package_name>`
+> `$ roscd <PACKAGE_NAME>`
 > `$ nano package.xml`
 
 ```
@@ -87,7 +82,7 @@ edit this file in package directory </br>
   <name>PACKAGE_NAME</name> 
   <version>0.0.0</version> 
   <description>DESCRIPTION</description> 
-  <maintainer email="YOUR_EMAIL">YOUR_NAME</maintainer> 
+  <maintainer email="---YOUR_EMAIL---">---YOUR_NAME---</maintainer> 
   <license>BSD</license>
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>rospy</build_depend>
@@ -108,7 +103,7 @@ edit this file in package directory </br>
 </package> 
 ```
 
-**2.5 plugin.xml file**
+**3.3 plugin.xml file**
 
 
 add this file to the package directory </br>
@@ -118,7 +113,7 @@ add this file to the package directory </br>
 
 ```
 <library path="src">
-  <class name="MyPlugin" type="PACKAGE_NAME.my_module.MyPlugin" base_class_type="rqt_gui_py::Plugin">
+  <class name="MyPlugin" type="---PACKAGE_NAME---.my_module.MyPlugin" base_class_type="rqt_gui_py::Plugin">
     <description>
       An example Python GUI plugin to create a great user interface.
     </description>
@@ -131,14 +126,14 @@ add this file to the package directory </br>
 </library> 
 ```
 
-**2.6 CMakeList.txt**
+**3.4 CMakeList.txt**
 
 edit file in package directory </br>
 > `$ nano CMakeList.txt`
 
 ```
 cmake_minimum_required(VERSION 3.0.2)
-project(<package_name>)
+project(<PACKAGE_NAME>)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
@@ -159,7 +154,7 @@ install(PROGRAMS scripts/my_gui_pkg
 )
 ```
 
-**2.7 setup.py file**
+**3.5 setup.py file**
 
 create file in package directory </br>
 > `$ touch setup.py`
@@ -172,33 +167,33 @@ from distutils.core import setup
 from catkin_pkg.python_setup import generate_distutils_setup
 
 d = generate_distutils_setup(
-    packages=['<package_name>'],
+    packages=['<PACKAGE_NAME>'],
     package_dir={'': 'src'}, 
-    scripts=['scripts/<package_name>']
+    scripts=['scripts/<PACKAGE_NAME>']
 )
 
 setup(**d)
 ```
 
-**2.7 scripts/<package_name>**
+**3.6 scripts/<PACKAGE_NAME>**
   
 give executable permissions </br>
-> `$ chmod 755 <package_name>`
+> `$ chmod 755 <PACKAGE_NAME>`
 
 ```
 #!/usr/bin/env python
 
 import sys
 
-from <package_name>.my_module import MyPlugin
+from <PACKAGE_NAME>.my_module import MyPlugin
 from rqt_gui.main import Main
 
-plugin = '<package_name>'
+plugin = '<PACKAGE_NAME>'
 main = Main(filename=plugin)
 sys.exit(main.main(standalone=plugin))
 ```
 
-**2.8 Build Package**
+**3.7 Build Package**
 
 > `$ source /opt/ros/kinetic/setup.bash`
 > `$ cd ~/catkin_ws/`
@@ -207,13 +202,11 @@ sys.exit(main.main(standalone=plugin))
 > `$ catkin_make`
 > `$ roscd <package_name>`
 
-**2.9 Run Package**
+**3.8 Run Package**
 
-> `$ rosrun <package_name> <package_name>`
+> `$ rosrun <PACKAGE_NAME> <package_name>`
 or </br>
-> `$ rqt --standalone <package_name>`
-
-***giving error: qt_gui_main() found no plugin matching "<package_name>"***
+> `$ rqt --standalone <PACKAGE_NAME>`
 
 Notes: </br>
 
